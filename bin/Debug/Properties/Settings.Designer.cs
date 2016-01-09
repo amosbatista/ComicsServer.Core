@@ -26,11 +26,11 @@ namespace AmosBatista.ComicsServer.Core.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=E:\\Amos\\Meus Projetos\\Visual Studio\\Comics Server\\Database\\Database.s" +
-            "df;Password=root;Persist Security Info=True")]
-        public string DatabaseConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=198.71.225.145;Initial Catalog=ComicsServer;User ID=adm_amos;Password" +
+            "=750@freeza")]
+        public string ComicsServerConnectionString {
             get {
-                return ((string)(this["DatabaseConnectionString"]));
+                return ((string)(this["ComicsServerConnectionString"]));
             }
         }
     }

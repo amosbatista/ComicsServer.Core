@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
+using AmosBatista.ComicsServer.Core.StringRepository.Context;
 
-namespace AmosBatista.ComicsServer.Core.StringRepository
+namespace AmosBatista.ComicsServer.Core.StringRepository.Repository
 {
     public class TextRepository:ITextRepository<Dictionary<string,string>>
     {

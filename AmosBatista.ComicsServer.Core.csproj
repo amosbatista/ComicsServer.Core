@@ -46,12 +46,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>JSON\Bin\Net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,19 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicStyleEpisodeContent.cs" />
-    <Compile Include="ComicsServerDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ComicsServerDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Episode.cs" />
-    <Compile Include="EpisodeRepositoryToSQLServer.cs" />
-    <Compile Include="IEpisode.cs" />
-    <Compile Include="IEpisodeContent.cs" />
-    <Compile Include="IEpisodeRepository.cs" />
-    <Compile Include="IParametrosPesquisaEpisodio.cs" />
-    <Compile Include="ParametrosPesquisaEpisodio.cs" />
+    <Compile Include="Data\Context\Episode.cs" />
+    <Compile Include="Data\Context\Map.cs" />
+    <Compile Include="Data\Context\Page.cs" />
+    <Compile Include="Data\Repository\EpisodeRepository.cs" />
+    <Compile Include="Data\Repository\MapRepository.cs" />
+    <Compile Include="Data\Repository\PageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -81,26 +75,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="SQLOperation.cs" />
-    <Compile Include="StringRepository\IdiomTranslation.cs" />
-    <Compile Include="StringRepository\IIdiomTranslation.cs" />
-    <Compile Include="StringRepository\ITextRepository.cs" />
-    <Compile Include="StringRepository\ITextRepository_Repository.cs" />
-    <Compile Include="StringRepository\SimpleTranslation.cs" />
-    <Compile Include="StringRepository\TextRepository.cs" />
-    <Compile Include="StringRepository\TextRepository_SQLToJSON.cs" />
+    <Compile Include="StringRepository\Context\IdiomTranslation.cs" />
+    <Compile Include="StringRepository\Context\IIdiomTranslation.cs" />
+    <Compile Include="StringRepository\Context\ITextRepository.cs" />
+    <Compile Include="StringRepository\Context\ITextRepository_Repository.cs" />
+    <Compile Include="StringRepository\Context\SimpleTranslation.cs" />
+    <Compile Include="StringRepository\Repository\TextRepository.cs" />
+    <Compile Include="StringRepository\Repository\TextRepository_SQLToJSON.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="ComicsServerDataSet.xsc">
-      <DependentUpon>ComicsServerDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ComicsServerDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ComicsServerDataSet.Designer.cs</LastGenOutput>
+    <None Include="app.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="ComicsServerDataSet.xss">
-      <DependentUpon>ComicsServerDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -135,7 +120,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

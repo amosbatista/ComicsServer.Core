@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ComicsServerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ComicsServerModelStoreContainer">
+    <EntitySet Name="Episodes" EntityType="ComicsServerModel.Store.Episodes" store:Type="Tables" Schema="adm_amos" />
+    <EntitySet Name="Maps" EntityType="ComicsServerModel.Store.Maps" store:Type="Tables" Schema="adm_amos" />
+    <EntitySet Name="Pages" EntityType="ComicsServerModel.Store.Pages" store:Type="Tables" Schema="adm_amos" />
+    <AssociationSet Name="FK__Maps__PageID__3E52440B" Association="ComicsServerModel.Store.FK__Maps__PageID__3E52440B">
+      <End Role="Pages" EntitySet="Pages" />
+      <End Role="Maps" EntitySet="Maps" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pages__EpisodeNu__3F466844" Association="ComicsServerModel.Store.FK__Pages__EpisodeNu__3F466844">
+      <End Role="Episodes" EntitySet="Episodes" />
+      <End Role="Pages" EntitySet="Pages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Episodes">
+    <Key>
+      <PropertyRef Name="EpisodeNumber" />
+    </Key>
+    <Property Name="EpisodeNumber" Type="int" Nullable="false" />
+    <Property Name="Idiom" Type="varchar" Nullable="false" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Maps">
+    <Key>
+      <PropertyRef Name="mapID" />
+    </Key>
+    <Property Name="mapID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Scale" Type="int" Nullable="false" />
+    <Property Name="X" Type="int" Nullable="false" />
+    <Property Name="Y" Type="int" Nullable="false" />
+    <Property Name="PageID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pages">
+    <Key>
+      <PropertyRef Name="pageID" />
+    </Key>
+    <Property Name="pageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Path" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="EpisodeNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Maps__PageID__3E52440B">
+    <End Role="Pages" Type="ComicsServerModel.Store.Pages" Multiplicity="1" />
+    <End Role="Maps" Type="ComicsServerModel.Store.Maps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pages">
+        <PropertyRef Name="pageID" />
+      </Principal>
+      <Dependent Role="Maps">
+        <PropertyRef Name="PageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pages__EpisodeNu__3F466844">
+    <End Role="Episodes" Type="ComicsServerModel.Store.Episodes" Multiplicity="1" />
+    <End Role="Pages" Type="ComicsServerModel.Store.Pages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Episodes">
+        <PropertyRef Name="EpisodeNumber" />
+      </Principal>
+      <Dependent Role="Pages">
+        <PropertyRef Name="EpisodeNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

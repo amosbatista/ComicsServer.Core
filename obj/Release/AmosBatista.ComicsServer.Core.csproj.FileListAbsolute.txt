@@ -6,6 +6,3 @@ E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\
 E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\obj\Release\AmosBatista.ComicsServer.Core.dll
 E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\obj\Release\AmosBatista.ComicsServer.Core.pdb
 E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\bin\Release\AmosBatista.ComicsServer.Core.pdb
-E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\bin\Release\Newtonsoft.Json.dll
-E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\bin\Release\Newtonsoft.Json.pdb
-E:\Amos\Meus Projetos\Visual Studio\Comics Server\AmosBatista.ComicsServer.Core\bin\Release\Newtonsoft.Json.xml

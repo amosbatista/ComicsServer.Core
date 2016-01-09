@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ComicsServerModelStoreContainer" CdmEntityContainer="ComicsServerEntities">
+    <EntitySetMapping Name="Episodes">
+      <EntityTypeMapping TypeName="ComicsServerModel.Episodes">
+        <MappingFragment StoreEntitySet="Episodes">
+          <ScalarProperty Name="EpisodeNumber" ColumnName="EpisodeNumber" />
+          <ScalarProperty Name="Idiom" ColumnName="Idiom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps">
+      <EntityTypeMapping TypeName="ComicsServerModel.Maps">
+        <MappingFragment StoreEntitySet="Maps">
+          <ScalarProperty Name="mapID" ColumnName="mapID" />
+          <ScalarProperty Name="Scale" ColumnName="Scale" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Y" ColumnName="Y" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="ComicsServerModel.Pages">
+        <MappingFragment StoreEntitySet="Pages">
+          <ScalarProperty Name="pageID" ColumnName="pageID" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="EpisodeNumber" ColumnName="EpisodeNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

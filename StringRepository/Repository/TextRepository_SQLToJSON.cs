@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using Newtonsoft.Json;
+using AmosBatista.ComicsServer.Core.StringRepository.Context;
+using System;
 
-namespace AmosBatista.ComicsServer.Core.StringRepository
+namespace AmosBatista.ComicsServer.Core.StringRepository.Repository
 {
-    public class TextRepository_SQLToJSON : ITextRepository_Repository<Dictionary<string,string>,string>
+    public class TextRepository_SQLToJSON : ITextRepository_Repository<Dictionary<string,string>, List<SimpleTranslation>>
     {
         public void SaveTextRepository(ITextRepository<Dictionary<string, string>> textRepository)
         {
@@ -28,7 +27,7 @@ namespace AmosBatista.ComicsServer.Core.StringRepository
         
         }
 
-        public string LoadTextRepository()
+        public List<SimpleTranslation> LoadTextRepository()
         {
             SqlCommand sqlCommand = null;
             var translationList = new List<SimpleTranslation>();
@@ -70,7 +69,7 @@ namespace AmosBatista.ComicsServer.Core.StringRepository
                 translationList.Add(simpleTranslation);
 
                 // With the translation repository complete, generate the JSON format
-                return JsonConvert.SerializeObject(translationList, Formatting.None );
+                return translationList;
             }
             catch (Exception e) // Em qualquer caso de erro, retornar nulo.
             {

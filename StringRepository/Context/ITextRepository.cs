@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AmosBatista.ComicsServer.Core.StringRepository
+namespace AmosBatista.ComicsServer.Core.StringRepository.Context
 {
     // Interface that represents a text repository
     public interface ITextRepository <RepositoryType>
