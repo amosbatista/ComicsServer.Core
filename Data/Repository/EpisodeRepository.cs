@@ -2,6 +2,7 @@
 using System;
 using AmosBatista.ComicsServer.Core;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace AmosBatista.ComicsServer.Core.Data.Repository
 {
@@ -42,10 +43,14 @@ namespace AmosBatista.ComicsServer.Core.Data.Repository
             if (this.EpisodeHasBeenLoaded(episode.EpisodeNumber, episode.Idiom) == false)
             {
                 // If is not, insert a new episode
-                var sqlCommand = new SqlCommand("INSERT INTO EPISODES(EpisodeNumber, IDIOM) VALUES(@EPISODENUMBER, @IDIOM)");
+                var sqlCommand = new SqlCommand("INSERT INTO EPISODES(EpisodeNumber, IDIOM, Prologue, Title, ImgHeaderPath) VALUES(@EPISODENUMBER, @IDIOM, @Prologue, @Title, @ImgHeaderPath)");
                 // Set parameters
                 sqlCommand.Parameters.AddWithValue("EPISODENUMBER", episode.EpisodeNumber);
                 sqlCommand.Parameters.AddWithValue("IDIOM", episode.Idiom);
+                sqlCommand.Parameters.AddWithValue("Prologue", episode.Prologue);
+                sqlCommand.Parameters.AddWithValue("Title", episode.Title);
+                sqlCommand.Parameters.AddWithValue("ImgHeaderPath", episode.ImgHeaderPath);
+                
                 SQLOperation.ExecuteSQLCommand(sqlCommand);
             }
 
@@ -74,6 +79,31 @@ namespace AmosBatista.ComicsServer.Core.Data.Repository
                 return true;
         
 
+        }
+
+        // Return the list of all episodes of the page. It will just load the header of episodes, not the entire page  and map list
+        public List<Episode> AllEpisodeList()
+        {
+            // If is not, insert a new episode
+            var sqlCommand = new SqlCommand("SELECT * FROM EPISODES ORDER BY EPISODENUMBER ASC");
+            var dt = SQLOperation.ExecuteSQLCommandWithResult(sqlCommand);
+
+            var episodeList = new List<Episode>(dt.Tables[0].Rows.Count);
+
+            for (int count = 0; count <= dt.Tables[0].Rows.Count - 1; count++)
+            {
+                //Setting a loaded episode
+                var episode = new Episode();
+                episode.EpisodeNumber = Int16.Parse(dt.Tables[0].Rows[count]["EPISODENUMBER"].ToString());
+                episode.Idiom = dt.Tables[0].Rows[count]["idiom"].ToString();
+                episode.Title = dt.Tables[0].Rows[count]["Title"].ToString();
+                episode.Prologue = dt.Tables[0].Rows[count]["Prologue"].ToString();
+                episode.ImgHeaderPath = dt.Tables[0].Rows[count]["ImgHeaderPath"].ToString();
+
+                episodeList.Add(episode);
+            }
+
+            return episodeList;
         }
     }
 }
